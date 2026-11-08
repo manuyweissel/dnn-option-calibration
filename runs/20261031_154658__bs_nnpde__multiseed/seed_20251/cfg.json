@@ -1,0 +1,67 @@
+{
+  "experiment_id": "bs_nnpde",
+  "seed": 20251,
+  "model": {
+    "name": "BS",
+    "params": {
+      "S0": 1.0,
+      "r": 0.02,
+      "sigma": 0.2
+    },
+    "sweep": null
+  },
+  "grid": {
+    "K": 50,
+    "T": 20,
+    "spacing": "logm",
+    "K_min": 0.8,
+    "K_max": 1.2,
+    "T_min": 0.1,
+    "T_max": null
+  },
+  "noise": {
+    "price_rel": 0.0,
+    "greek_rel": 0.0,
+    "seed": null
+  },
+  "net": {
+    "L": 4,
+    "W": 64,
+    "activation": "softplus",
+    "head": "single"
+  },
+  "loss": {
+    "lambda_price": 1.0,
+    "lambda_greeks": 0.0,
+    "lambda_pde": 0.1,
+    "lambda_bc": 1.0,
+    "lambda_noarb": 0.0,
+    "curriculum": [
+      "price",
+      "price+pde"
+    ]
+  },
+  "optim": {
+    "name": "adamw",
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "schedule": "cosine",
+    "epochs": 2000,
+    "batch_data": 256,
+    "batch_collocation": 1000,
+    "amp": false,
+    "grad_clip": 1.0,
+    "early_stop_patience": 200
+  },
+  "eval": {
+    "metrics": [
+      "rmse_price",
+      "mae_greeks",
+      "rmse_iv",
+      "param_rel_err",
+      "rmse_extrap"
+    ],
+    "test_grid": "heldout"
+  },
+  "ablation_tag": null
+}

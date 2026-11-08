@@ -1,0 +1,146 @@
+{"timestamp": "2026-10-31T16:09:58", "level": "INFO", "message": "Initializing experiment: heston_full_vs_priceonly", "module": "runner", "function": "__init__", "line": 94}
+{"timestamp": "2026-10-31T16:09:58", "level": "INFO", "message": "Run directory: runs/20261031_160913__heston_full_vs_priceonly__multiseed/seed_20253", "module": "runner", "function": "__init__", "line": 95}
+{"timestamp": "2026-10-31T16:09:58", "level": "INFO", "message": "System information", "module": "logging_utils", "function": "log_system_info", "line": 144}
+{"timestamp": "2026-10-31T16:09:58", "level": "INFO", "message": "=== Preparation Phase ===", "module": "runner", "function": "prepare", "line": 121}
+{"timestamp": "2026-10-31T16:09:58", "level": "INFO", "message": "Random seed set to 20253", "module": "runner", "function": "prepare", "line": 136}
+{"timestamp": "2026-10-31T16:09:58", "level": "INFO", "message": "Pricer: Heston with params {'S0': 1.0, 'r': 0.02, 'kappa': 2.0, 'theta': 0.04, 'xi': 0.5, 'rho': -0.5, 'v0': 0.04}", "module": "runner", "function": "prepare", "line": 141}
+{"timestamp": "2026-10-31T16:09:58", "level": "INFO", "message": "Grid created: 1000 points (50 \u00d7 20)", "module": "runner", "function": "prepare", "line": 154}
+{"timestamp": "2026-10-31T16:10:08", "level": "INFO", "message": "Synthetic data generated", "module": "runner", "function": "prepare", "line": 160}
+{"timestamp": "2026-10-31T16:10:08", "level": "INFO", "message": "Data split: train=420, val=60, test_interp=60, test_extrap=460", "module": "runner", "function": "prepare", "line": 184}
+{"timestamp": "2026-10-31T16:10:08", "level": "INFO", "message": "Model created: 4 layers \u00d7 64 units, 12737 parameters, activation=softplus", "module": "runner", "function": "prepare", "line": 198}
+{"timestamp": "2026-10-31T16:10:08", "level": "INFO", "message": "Config saved: runs/20261031_160913__heston_full_vs_priceonly__multiseed/seed_20253/cfg.json (hash=ad018cb0f31f719e)", "module": "runner", "function": "prepare", "line": 207}
+{"timestamp": "2026-10-31T16:10:08", "level": "INFO", "message": "=== Training Phase ===", "module": "runner", "function": "train_and_eval", "line": 219}
+{"timestamp": "2026-10-31T16:10:08", "level": "INFO", "message": "Heston PDE params: {'kappa': 2.0, 'theta': 0.04, 'xi': 0.5, 'rho': -0.5, 'v0': 0.04}", "module": "runner", "function": "train_and_eval", "line": 261}
+{"timestamp": "2026-10-31T16:10:08", "level": "INFO", "message": "Epoch 0/2000: train_loss=2.600247, val_loss=0.347028", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:08", "level": "INFO", "message": "Epoch 10/2000: train_loss=0.122547, val_loss=0.190378", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:08", "level": "INFO", "message": "Epoch 20/2000: train_loss=0.086857, val_loss=0.188051", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:08", "level": "INFO", "message": "Epoch 30/2000: train_loss=0.081251, val_loss=0.183917", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:08", "level": "INFO", "message": "Epoch 40/2000: train_loss=0.076288, val_loss=0.180503", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:08", "level": "INFO", "message": "Epoch 50/2000: train_loss=0.070546, val_loss=0.177162", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:08", "level": "INFO", "message": "Epoch 60/2000: train_loss=0.063110, val_loss=0.172158", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:08", "level": "INFO", "message": "Epoch 70/2000: train_loss=0.046192, val_loss=0.160115", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:08", "level": "INFO", "message": "Epoch 80/2000: train_loss=0.015757, val_loss=0.135578", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:08", "level": "INFO", "message": "Epoch 90/2000: train_loss=0.093875, val_loss=0.122792", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:08", "level": "INFO", "message": "Epoch 100/2000: train_loss=0.036244, val_loss=0.107355", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:09", "level": "INFO", "message": "Epoch 110/2000: train_loss=0.058423, val_loss=0.116243", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:09", "level": "INFO", "message": "Epoch 120/2000: train_loss=0.032518, val_loss=0.108123", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:09", "level": "INFO", "message": "Epoch 130/2000: train_loss=0.032163, val_loss=0.111050", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:09", "level": "INFO", "message": "Epoch 140/2000: train_loss=0.032828, val_loss=0.107569", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:09", "level": "INFO", "message": "Epoch 150/2000: train_loss=0.021073, val_loss=0.107953", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:09", "level": "INFO", "message": "Epoch 160/2000: train_loss=0.023111, val_loss=0.106002", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:09", "level": "INFO", "message": "Epoch 170/2000: train_loss=0.022705, val_loss=0.108235", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:09", "level": "INFO", "message": "Epoch 180/2000: train_loss=0.021720, val_loss=0.105692", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:09", "level": "INFO", "message": "Epoch 190/2000: train_loss=0.017180, val_loss=0.107025", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:09", "level": "INFO", "message": "Epoch 200/2000: train_loss=0.017377, val_loss=0.105154", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:09", "level": "INFO", "message": "Epoch 210/2000: train_loss=0.015880, val_loss=0.106766", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:09", "level": "INFO", "message": "Epoch 220/2000: train_loss=0.008209, val_loss=0.106158", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:10", "level": "INFO", "message": "Epoch 230/2000: train_loss=0.001929, val_loss=0.104053", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:10", "level": "INFO", "message": "Epoch 240/2000: train_loss=0.001627, val_loss=0.104701", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:10", "level": "INFO", "message": "Epoch 250/2000: train_loss=0.001214, val_loss=0.104520", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:10", "level": "INFO", "message": "Epoch 260/2000: train_loss=0.001205, val_loss=0.104447", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:10", "level": "INFO", "message": "Epoch 270/2000: train_loss=0.001211, val_loss=0.104484", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:10", "level": "INFO", "message": "Epoch 280/2000: train_loss=0.001153, val_loss=0.104973", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:10", "level": "INFO", "message": "Epoch 290/2000: train_loss=0.001288, val_loss=0.104624", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:10", "level": "INFO", "message": "Epoch 300/2000: train_loss=0.001600, val_loss=0.104833", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:10", "level": "INFO", "message": "Epoch 310/2000: train_loss=0.001478, val_loss=0.104770", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:10", "level": "INFO", "message": "Epoch 320/2000: train_loss=0.001461, val_loss=0.104578", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:10", "level": "INFO", "message": "Epoch 330/2000: train_loss=0.001222, val_loss=0.105024", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:10", "level": "INFO", "message": "Epoch 340/2000: train_loss=0.001266, val_loss=0.104727", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:11", "level": "INFO", "message": "Epoch 350/2000: train_loss=0.001251, val_loss=0.104642", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:11", "level": "INFO", "message": "Epoch 360/2000: train_loss=0.001158, val_loss=0.104835", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:11", "level": "INFO", "message": "Epoch 370/2000: train_loss=0.001160, val_loss=0.104805", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:11", "level": "INFO", "message": "Epoch 380/2000: train_loss=0.001233, val_loss=0.104727", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:11", "level": "INFO", "message": "Epoch 390/2000: train_loss=0.001404, val_loss=0.105052", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:11", "level": "INFO", "message": "Epoch 400/2000: train_loss=0.001396, val_loss=0.105083", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:11", "level": "INFO", "message": "Epoch 410/2000: train_loss=0.001212, val_loss=0.104849", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:11", "level": "INFO", "message": "Epoch 420/2000: train_loss=0.001252, val_loss=0.104564", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:11", "level": "INFO", "message": "Epoch 430/2000: train_loss=0.001204, val_loss=0.104553", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:11", "level": "INFO", "message": "Epoch 440/2000: train_loss=0.001302, val_loss=0.104516", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:11", "level": "INFO", "message": "Epoch 450/2000: train_loss=0.001593, val_loss=0.105116", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:12", "level": "INFO", "message": "Epoch 460/2000: train_loss=0.001149, val_loss=0.104822", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:12", "level": "INFO", "message": "Epoch 470/2000: train_loss=0.001193, val_loss=0.104550", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:12", "level": "INFO", "message": "Epoch 480/2000: train_loss=0.001644, val_loss=0.104632", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:12", "level": "INFO", "message": "Epoch 490/2000: train_loss=0.001260, val_loss=0.104653", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:12", "level": "INFO", "message": "Epoch 500/2000: train_loss=0.001333, val_loss=0.105124", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:12", "level": "INFO", "message": "Epoch 510/2000: train_loss=0.001157, val_loss=0.104885", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:12", "level": "INFO", "message": "Epoch 520/2000: train_loss=0.001359, val_loss=0.104974", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:12", "level": "INFO", "message": "Epoch 530/2000: train_loss=0.001421, val_loss=0.105207", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:12", "level": "INFO", "message": "Epoch 540/2000: train_loss=0.001257, val_loss=0.104792", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:12", "level": "INFO", "message": "Epoch 550/2000: train_loss=0.001306, val_loss=0.104622", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:12", "level": "INFO", "message": "Epoch 560/2000: train_loss=0.001152, val_loss=0.104795", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:12", "level": "INFO", "message": "Epoch 570/2000: train_loss=0.001215, val_loss=0.104613", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:13", "level": "INFO", "message": "Epoch 580/2000: train_loss=0.001160, val_loss=0.104611", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:13", "level": "INFO", "message": "Epoch 590/2000: train_loss=0.001222, val_loss=0.104660", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:13", "level": "INFO", "message": "Epoch 600/2000: train_loss=0.001232, val_loss=0.104911", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:13", "level": "INFO", "message": "Epoch 610/2000: train_loss=0.001143, val_loss=0.104841", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:13", "level": "INFO", "message": "Epoch 620/2000: train_loss=0.001133, val_loss=0.104705", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:13", "level": "INFO", "message": "Epoch 630/2000: train_loss=0.001257, val_loss=0.104795", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:13", "level": "INFO", "message": "Epoch 640/2000: train_loss=0.001296, val_loss=0.104546", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:13", "level": "INFO", "message": "Epoch 650/2000: train_loss=0.001495, val_loss=0.104790", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:13", "level": "INFO", "message": "Epoch 660/2000: train_loss=0.001304, val_loss=0.104797", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:13", "level": "INFO", "message": "Epoch 670/2000: train_loss=0.001148, val_loss=0.104698", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:13", "level": "INFO", "message": "Epoch 680/2000: train_loss=0.001134, val_loss=0.104719", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:13", "level": "INFO", "message": "Epoch 690/2000: train_loss=0.001221, val_loss=0.104923", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:14", "level": "INFO", "message": "Epoch 700/2000: train_loss=0.001285, val_loss=0.105135", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:14", "level": "INFO", "message": "Epoch 710/2000: train_loss=0.001257, val_loss=0.104641", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:14", "level": "INFO", "message": "Epoch 720/2000: train_loss=0.001056, val_loss=0.104715", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:14", "level": "INFO", "message": "Epoch 730/2000: train_loss=0.001136, val_loss=0.104948", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:14", "level": "INFO", "message": "Epoch 740/2000: train_loss=0.001186, val_loss=0.104862", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:14", "level": "INFO", "message": "Epoch 750/2000: train_loss=0.001205, val_loss=0.104960", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:14", "level": "INFO", "message": "Epoch 760/2000: train_loss=0.001205, val_loss=0.104686", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:14", "level": "INFO", "message": "Epoch 770/2000: train_loss=0.001291, val_loss=0.104602", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:14", "level": "INFO", "message": "Epoch 780/2000: train_loss=0.001296, val_loss=0.104637", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:14", "level": "INFO", "message": "Epoch 790/2000: train_loss=0.001265, val_loss=0.104571", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:14", "level": "INFO", "message": "Epoch 800/2000: train_loss=0.001244, val_loss=0.104860", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:14", "level": "INFO", "message": "Epoch 810/2000: train_loss=0.001271, val_loss=0.104790", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:15", "level": "INFO", "message": "Epoch 820/2000: train_loss=0.001377, val_loss=0.104582", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:15", "level": "INFO", "message": "Epoch 830/2000: train_loss=0.001343, val_loss=0.104781", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:15", "level": "INFO", "message": "Epoch 840/2000: train_loss=0.001189, val_loss=0.104615", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:15", "level": "INFO", "message": "Epoch 850/2000: train_loss=0.001228, val_loss=0.104555", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:15", "level": "INFO", "message": "Epoch 860/2000: train_loss=0.001259, val_loss=0.104604", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:15", "level": "INFO", "message": "Epoch 870/2000: train_loss=0.001296, val_loss=0.104783", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:15", "level": "INFO", "message": "Epoch 880/2000: train_loss=0.001160, val_loss=0.104485", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:15", "level": "INFO", "message": "Epoch 890/2000: train_loss=0.001216, val_loss=0.104768", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:15", "level": "INFO", "message": "Epoch 900/2000: train_loss=0.001220, val_loss=0.105061", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:15", "level": "INFO", "message": "Epoch 910/2000: train_loss=0.001493, val_loss=0.105329", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:15", "level": "INFO", "message": "Epoch 920/2000: train_loss=0.001213, val_loss=0.104699", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:16", "level": "INFO", "message": "Epoch 930/2000: train_loss=0.001098, val_loss=0.104604", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:16", "level": "INFO", "message": "Epoch 940/2000: train_loss=0.001134, val_loss=0.104545", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:16", "level": "INFO", "message": "Epoch 950/2000: train_loss=0.001214, val_loss=0.104554", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:16", "level": "INFO", "message": "Epoch 960/2000: train_loss=0.001322, val_loss=0.104429", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:16", "level": "INFO", "message": "Epoch 970/2000: train_loss=0.001254, val_loss=0.104592", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:16", "level": "INFO", "message": "Epoch 980/2000: train_loss=0.001441, val_loss=0.104482", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:16", "level": "INFO", "message": "Epoch 990/2000: train_loss=0.001416, val_loss=0.104828", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:16", "level": "INFO", "message": "Epoch 1000/2000: train_loss=178.222038, val_loss=0.100871", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:16", "level": "INFO", "message": "Epoch 1010/2000: train_loss=144.724142, val_loss=0.673459", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:17", "level": "INFO", "message": "Epoch 1020/2000: train_loss=183.653664, val_loss=0.898743", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:17", "level": "INFO", "message": "Epoch 1030/2000: train_loss=175.103973, val_loss=2.514449", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:17", "level": "INFO", "message": "Epoch 1040/2000: train_loss=170.118805, val_loss=2.707079", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:17", "level": "INFO", "message": "Epoch 1050/2000: train_loss=154.993896, val_loss=2.949654", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:17", "level": "INFO", "message": "Epoch 1060/2000: train_loss=188.371880, val_loss=2.628047", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:17", "level": "INFO", "message": "Epoch 1070/2000: train_loss=160.282703, val_loss=3.346545", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:18", "level": "INFO", "message": "Epoch 1080/2000: train_loss=205.499937, val_loss=2.971524", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:18", "level": "INFO", "message": "Epoch 1090/2000: train_loss=140.943551, val_loss=3.634223", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:18", "level": "INFO", "message": "Epoch 1100/2000: train_loss=177.424278, val_loss=4.196921", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:18", "level": "INFO", "message": "Epoch 1110/2000: train_loss=186.574299, val_loss=4.775203", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:18", "level": "INFO", "message": "Epoch 1120/2000: train_loss=157.938332, val_loss=2.552888", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:18", "level": "INFO", "message": "Epoch 1130/2000: train_loss=177.526894, val_loss=3.040168", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:18", "level": "INFO", "message": "Epoch 1140/2000: train_loss=157.458946, val_loss=3.258832", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:18", "level": "INFO", "message": "Epoch 1150/2000: train_loss=152.695885, val_loss=3.223346", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:19", "level": "INFO", "message": "Epoch 1160/2000: train_loss=178.050613, val_loss=4.243390", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:19", "level": "INFO", "message": "Epoch 1170/2000: train_loss=139.169130, val_loss=3.026004", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:19", "level": "INFO", "message": "Epoch 1180/2000: train_loss=184.233055, val_loss=2.959142", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:19", "level": "INFO", "message": "Epoch 1190/2000: train_loss=182.382648, val_loss=3.513675", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:19", "level": "INFO", "message": "Epoch 1200/2000: train_loss=200.758560, val_loss=4.334622", "module": "engine", "function": "train", "line": 458}
+{"timestamp": "2026-10-31T16:10:19", "level": "INFO", "message": "Early stopping at epoch 1202", "module": "engine", "function": "train", "line": 483}
+{"timestamp": "2026-10-31T16:10:19", "level": "INFO", "message": "Restored best final-stage model (epoch=1002, final stage starts at epoch 1000, val_loss=0.091249)", "module": "engine", "function": "train", "line": 488}
+{"timestamp": "2026-10-31T16:10:19", "level": "INFO", "message": "Training completed in 11.6s", "module": "runner", "function": "train_and_eval", "line": 294}
+{"timestamp": "2026-10-31T16:10:19", "level": "INFO", "message": "Checkpoint saved to runs/20261031_160913__heston_full_vs_priceonly__multiseed/seed_20253/model.pt", "module": "engine", "function": "save_checkpoint", "line": 509}
+{"timestamp": "2026-10-31T16:10:19", "level": "INFO", "message": "Model saved: runs/20261031_160913__heston_full_vs_priceonly__multiseed/seed_20253/model.pt", "module": "runner", "function": "train_and_eval", "line": 299}
+{"timestamp": "2026-10-31T16:10:19", "level": "INFO", "message": "Training history saved: runs/20261031_160913__heston_full_vs_priceonly__multiseed/seed_20253/metrics.csv", "module": "runner", "function": "train_and_eval", "line": 304}
+{"timestamp": "2026-10-31T16:10:19", "level": "INFO", "message": "=== Reporting Phase ===", "module": "runner", "function": "report", "line": 313}
+{"timestamp": "2026-10-31T16:10:19", "level": "INFO", "message": "Inference latency: 0.081 ms (median of 100 runs, 60 grid points)", "module": "runner", "function": "_benchmark_inference", "line": 512}
+{"timestamp": "2026-10-31T16:10:19", "level": "INFO", "message": "Test metrics: {'rmse_price': 0.025007428585673987, 'rpe': 0.2977122417902398, 'mae_delta': 0.35654814545555197, 'mae_gamma': 1.1261019773148973, 'mae_theta': 0.06771412382721892, 'mae_avg': 0.5167880821992227, 'greek_norm_score': 0.8340934015540945, 'rmse_extrap': 0.04518172740903834, 'pde_residual_rmse': 0.07300157845020294, 'pde_residual_norm': 0.8109021782875061, 'arb_mono_frac': 0.0, 'arb_mono_severity': 0.0, 'arb_convex_frac': 0.0, 'arb_convex_severity': 0.0, 'arb_calendar_frac': 0.0, 'arb_calendar_severity': 0.0, 'train_time_s': 11.621846292167902, 'n_epochs': 1203.0, 'epoch_time_ms': 9.660720109865256, 'final_stage_start': 1000.0, 'best_epoch': 1002.0, 'inference_latency_ms': 0.08091703057289124}", "module": "runner", "function": "report", "line": 379}
+{"timestamp": "2026-10-31T16:10:19", "level": "INFO", "message": "Summary saved: runs/20261031_160913__heston_full_vs_priceonly__multiseed/seed_20253/summary.json", "module": "runner", "function": "report", "line": 395}
+{"timestamp": "2026-10-31T16:10:20", "level": "INFO", "message": "Figures saved to runs/20261031_160913__heston_full_vs_priceonly__multiseed/seed_20253/figures", "module": "runner", "function": "_generate_figures", "line": 574}
+{"timestamp": "2026-10-31T16:10:20", "level": "INFO", "message": "=== Experiment Complete ===", "module": "runner", "function": "report", "line": 400}
