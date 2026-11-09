@@ -46,22 +46,32 @@ This runs every experiment of the thesis with the seeds 20251–20255 and writes
   per-seed metrics of every experiment, plus hardware and software information under `_meta`,
 - `runs/<timestamp>__<experiment>__multiseed/`: one folder per seed with `cfg.json`, `metrics.csv`
   (per-epoch history), `model.pt` and `summary.json`,
-- the LaTeX tables and PNG figures.
+- the PNG figures and auxiliary tables (the thesis tables are written by `gen_all_tables.py`, see below).
 
 The classical baselines run on the CPU and are checkpointed per seed, so an interrupted run resumes;
-the Heston baselines take roughly 35 minutes (deterministic) and 50 minutes (Monte Carlo) per seed.
+the Heston baselines take roughly 40 minutes per seed, deterministic and Monte Carlo alike.
 Selected experiments can be re-run with `--only`, for example
 `--only act_ablation_relu.json,act_ablation_sine.json`.
 
-To regenerate tables and figures from an existing results file without training:
+The thesis reports `results/all_results_20261108_213044.json`. It combines the Black–Scholes entries
+(including ablations A1, A2 and A4 and the Black–Scholes classical calibrations) of
+`results/all_results_20261031_162739.json` (run of 31 October 2026) with the local-volatility and Heston
+entries (including ablation A3 and the classical calibrations) of
+`results/pricer_fix/all_results_pricer_fix.json` (run of 8 November 2026, same seeds); `_meta` records
+both sources. In the run of 8 November, neural and classical jobs ran concurrently, so its wall-clock
+times are upper bounds. `runs/` holds the per-run folders of both runs.
+
+To regenerate the thesis tables, figures and p-values from these results without training:
 
 ```bash
-python scripts/gen_all_tables.py  --results-file results/all_results_<timestamp>.json
-python scripts/gen_all_figures.py --results-file results/all_results_<timestamp>.json
+python scripts/gen_all_tables.py  --results-file results/all_results_20261108_213044.json
+python scripts/gen_all_figures.py --results-file results/all_results_20261108_213044.json
+python scripts/paired_tests.py    --results-file results/all_results_20261108_213044.json
 ```
 
-Inside the thesis repository the outputs are written to the LaTeX assets; in this stand-alone
-repository they are written to `outputs/`.
+`paired_tests.py` prints the paired two-sided t-tests (paired by seed) quoted in the thesis with their
+Holm-corrected p-values. Inside the thesis repository the tables and figures are written to the LaTeX
+assets; in this stand-alone repository they are written to `outputs/`.
 
 The numerical illustration of the grid-density stability constant (thesis Appendix A,
 "Numerical Illustration: Grid-Sparsity Scaling for Black–Scholes") is reproduced by
@@ -111,10 +121,11 @@ src/
   exp/      configuration schema, experiment runner, metrics, seeding, logging
   models/   networks, pricers (closed form, Dupire, Fourier, Monte Carlo), PDE operators, calibration
   train/    training engine, losses, collocation sampling
-scripts/    run_all_experiments.py, gen_all_tables.py, gen_all_figures.py, stability_scaling.py
-results/    aggregated results (JSON) of the canonical run
-runs/       per-run artefacts of the canonical run
-tests/      unit and smoke tests
+scripts/    run_all_experiments.py, gen_all_tables.py, gen_all_figures.py, paired_tests.py,
+            stability_scaling.py
+results/    aggregated results (JSON) of the reported runs
+runs/       per-run artefacts of the reported runs
+tests/      unit and smoke tests, including pricer regression tests
 ```
 
 ## Citation

@@ -84,23 +84,15 @@ class TestHestonPricer:
     
     def test_heston_reduces_to_bs(self):
         """
-        Heston with xi=0 (no vol of vol) should approximate BS.
-        Note: Perfect match not expected due to different models.
+        Heston with tiny vol of vol (v0 = theta) is BS with sigma = sqrt(v0).
+        Checked over the whole strike range: a check at K = S0 alone misses
+        strike-dependent errors such as a wrong Lewis prefactor.
         """
-        # Heston with very low vol of vol
-        heston = HestonPricer(S0=1.0, r=0.02, kappa=2.0, theta=0.04, 
+        heston = HestonPricer(S0=1.0, r=0.02, kappa=2.0, theta=0.04,
                               xi=0.01, rho=0.0, v0=0.04)
         bs = BSPricer(S0=1.0, r=0.02, sigma=0.2)  # sigma = sqrt(v0)
-        
-        K = np.array([1.0])
-        T = np.array([0.5])
-        
-        heston_price = heston.price(K, T)
-        bs_price = bs.price(K, T)
-        
-        # Should be within 10% for low xi
-        rel_diff = abs(heston_price[0] - bs_price[0]) / bs_price[0]
-        assert rel_diff < 0.2, f"Heston ({heston_price[0]:.4f}) far from BS ({bs_price[0]:.4f})"
+        K, T = (a.ravel() for a in np.meshgrid(np.linspace(0.8, 1.2, 9), [0.1, 0.5, 1.0]))
+        np.testing.assert_allclose(heston.price(K, T), bs.price(K, T), atol=1e-4)
     
     def test_heston_price_positive(self):
         """Heston prices should be positive."""
@@ -148,19 +140,14 @@ class TestLocalVolPricer:
     """Test Local Volatility Dupire PDE pricer."""
     
     def test_localvol_alpha_zero_is_bs(self):
-        """LocalVol with alpha=0, beta=0 should be similar to BS."""
+        """
+        LocalVol with alpha=0, beta=0 is BS with the same r. Checked over the
+        whole strike range: a check at K = S0 alone misses a flipped drift sign.
+        """
         lv = LocalVolPricer(S0=1.0, r=0.02, sigma0=0.2, alpha=0.0, beta=0.0)
         bs = BSPricer(S0=1.0, r=0.02, sigma=0.2)
-        
-        K = np.array([1.0])
-        T = np.array([0.5])
-        
-        lv_price = lv.price(K, T)
-        bs_price = bs.price(K, T)
-        
-        # Should be within 20% (PDE solver has some numerical error)
-        rel_diff = abs(lv_price[0] - bs_price[0]) / (bs_price[0] + 1e-10)
-        assert rel_diff < 0.3, f"LocalVol ({lv_price[0]:.4f}) far from BS ({bs_price[0]:.4f})"
+        K, T = (a.ravel() for a in np.meshgrid(np.linspace(0.8, 1.2, 9), [0.1, 0.5, 1.0]))
+        np.testing.assert_allclose(lv.price(K, T), bs.price(K, T), atol=1e-4)
     
     def test_localvol_surface_shape(self):
         """Test that local vol surface has expected shape."""
@@ -183,6 +170,42 @@ class TestLocalVolPricer:
         
         prices = lv.price(K, T)
         assert (prices >= 0).all(), "LocalVol prices should be non-negative"
+
+    def test_localvol_gamma_labels_match_bs_limit(self):
+        """
+        Strike-Gamma training labels of the LV generator (alpha = 0) on the
+        experiment grid (50x20, log-moneyness spacing) against the closed form.
+        Crank-Nicolson without Rannacher start-up leaves its largest error at
+        short maturity near the payoff kink (thesis Ch. 8).
+        """
+        from src.data.grids import create_grid
+        from src.data.synth import generate_synthetic_data
+
+        grid = create_grid(K=50, T=20, spacing="logm", K_min=0.8, K_max=1.2, T_min=0.1, S0=1.0)
+        params = dict(S0=1.0, r=0.02, sigma0=0.2, alpha=0.0, beta=0.0)
+        labels = generate_synthetic_data(grid, "LocalVol", params)
+        exact = BSPricer(S0=1.0, r=0.02, sigma=0.2).strike_gamma(labels["K"].values, labels["T"].values)
+        rel = np.abs(labels["gamma"].values - exact) / exact
+        assert np.median(rel) < 1e-3, np.median(rel)
+        assert rel.max() < 0.2, rel.max()
+
+
+class TestPricerCrossChecks:
+    """Checks away from the Black-Scholes limit, at the experiment parameters (Ch. 8)."""
+
+    def test_pricers_match_monte_carlo(self):
+        """Lewis-form Heston and Crank-Nicolson LV prices against independent MC (~50 s)."""
+        from src.models.mc_pricing import mc_price
+
+        K = np.array([0.8, 0.9, 1.0, 1.1, 1.2, 0.8, 1.0, 1.2])
+        T = np.array([0.5] * 5 + [1.0] * 3)
+        heston = dict(S0=1.0, r=0.02, kappa=2.0, theta=0.04, xi=0.5, rho=-0.5, v0=0.04)
+        local_vol = dict(S0=1.0, r=0.02, sigma0=0.2, alpha=0.5, beta=0.0)
+        # tolerances: Heston dominated by the full-truncation Euler bias (400 steps), LV by MC noise
+        for model, pricer, params, tol in (("Heston", HestonPricer(**heston), heston, 5e-4),
+                                           ("LocalVol", LocalVolPricer(**local_vol), local_vol, 1e-4)):
+            mc = mc_price(model, params, K, T, n_paths=400_000, n_steps=400)
+            np.testing.assert_allclose(pricer.price(K, T), mc, atol=tol, err_msg=model)
 
 
 class TestMonteCarloPricer:

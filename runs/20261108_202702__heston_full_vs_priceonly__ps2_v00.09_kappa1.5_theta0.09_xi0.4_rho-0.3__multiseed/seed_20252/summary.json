@@ -1,0 +1,33 @@
+{
+  "experiment_id": "heston_full_vs_priceonly__ps2_v00.09_kappa1.5_theta0.09_xi0.4_rho-0.3",
+  "config_hash": "05d12e03e48b4ee5",
+  "seed": 20252,
+  "model": "Heston",
+  "metrics": {
+    "rmse_price": 0.0075556791198104906,
+    "rpe": 0.09523616224371205,
+    "mae_delta": 0.017741583404508113,
+    "mae_gamma": 0.12440043528870408,
+    "mae_theta": 0.008012941577991255,
+    "mae_avg": 0.050051653423734487,
+    "greek_norm_score": 0.06168160779882261,
+    "rmse_extrap": 0.008118081390758536,
+    "pde_residual_rmse": 0.04936162754893303,
+    "pde_residual_norm": 0.5931354761123657,
+    "arb_mono_frac": 0.0,
+    "arb_mono_severity": 0.0,
+    "arb_convex_frac": 0.0,
+    "arb_convex_severity": 0.0,
+    "arb_calendar_frac": 0.0,
+    "arb_calendar_severity": 0.0,
+    "train_time_s": 27.348967634141445,
+    "n_epochs": 2000.0,
+    "epoch_time_ms": 13.674483817070723,
+    "final_stage_start": 1000.0,
+    "best_epoch": 1994.0,
+    "inference_latency_ms": 0.09577535092830658
+  },
+  "best_epoch": 1994,
+  "final_stage_start": 1000,
+  "last_epoch": 1999
+}

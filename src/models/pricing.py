@@ -243,8 +243,8 @@ class LocalVolPricer:
 
         Initial condition: C(K, 0) = max(S0 - K, 0)
         Boundary conditions:
-            C(K_min, T) = S0  (deep ITM)
-            C(K_max, T) = 0   (deep OTM)
+            C(K_min, T) = S0 - K_min exp(-rT)  (deep ITM)
+            C(K_max, T) = 0                     (deep OTM)
         """
         from scipy.linalg import solve_banded
 
@@ -267,13 +267,14 @@ class LocalVolPricer:
             alpha_c = 0.25 * dT * sigma_sq * Karr ** 2 / dK ** 2
             beta_c = 0.25 * dT * self.r * Karr / dK
 
-            sub = -alpha_c + beta_c
+            # Central difference of -r K dC/dK: +beta_c on C_{j-1}, -beta_c on C_{j+1}
+            sub = -alpha_c - beta_c
             diag = 1.0 + 2.0 * alpha_c
-            sup = -alpha_c - beta_c
+            sup = -alpha_c + beta_c
 
-            sub_r = alpha_c - beta_c
+            sub_r = alpha_c + beta_c
             diag_r = 1.0 - 2.0 * alpha_c
-            sup_r = alpha_c + beta_c
+            sup_r = alpha_c - beta_c
 
             rhs = diag_r * C
             rhs[1:] += sub_r[1:] * C[:-1]
@@ -281,7 +282,7 @@ class LocalVolPricer:
 
             diag[0] = 1.0; sup[0] = 0.0
             diag[-1] = 1.0; sub[-1] = 0.0
-            rhs[0] = self.S0
+            rhs[0] = self.S0 - K_min * np.exp(-self.r * self._T_grid[n])
             rhs[-1] = 0.0
 
             ab = np.zeros((3, nK))
@@ -459,7 +460,7 @@ class HestonPricer:
         <dW^1, dW^2>_t = ρ dt
     
     Prices are computed via the Lewis (2000) formula:
-        C = S0 - (K e^{-rT} / π) ∫_0^∞ Re[e^{-iu log(K)} φ(u - i/2) / (u² + 1/4)] du
+        C = S0 - (√K e^{-rT} / π) ∫_0^∞ Re[e^{-iu log(K)} φ(u - i/2) / (u² + 1/4)] du
     
     where φ(u) is the characteristic function of log(S_T).
     
@@ -584,8 +585,8 @@ class HestonPricer:
                     np.array([K]), np.array([T])
                 )[0]
         
-        # Lewis formula
-        price = self.S0 - (K * np.exp(-self.r * T) / np.pi) * integral
+        # Lewis formula; phi includes log(S0), so the prefactor is sqrt(K)
+        price = self.S0 - (np.sqrt(K) * np.exp(-self.r * T) / np.pi) * integral
         
         # Ensure non-negative and bounded
         price = max(price, 0.0)

@@ -1,6 +1,6 @@
 # 🎉 EXPERIMENT RESULTS - UPDATED
 
-**Last Updated:** 2026-11-02 09:22  
+**Last Updated:** 2026-11-08 23:00  
 **Status:** ✅ ALL CORE EXPERIMENTS COMPLETED
 
 ---
@@ -17,15 +17,15 @@
 | `bs_softplus_full` | BS | **3.59** | 0.31 | 5 | ✅ Complete |
 | `bs_softplus_price_only` | BS | **9.31** | 0.79 | 5 | ✅ Complete |
 | `bs_nondnn` | BS | **10.50** | 0.69 | 5 | ✅ Complete |
-| `lv_nn_baseline` | LocalVol | **9.43** | 0.97 | 5 | ✅ Complete |
-| `lv_nnm2` | LocalVol | **3.81** | 0.31 | 5 | ✅ Complete |
-| `lv_nnpde` | LocalVol | **8.96** | 1.10 | 5 | ✅ Complete |
-| `lv_dnn` | LocalVol | **2.62** | 0.45 | 5 | ✅ Complete |
-| `lv_density_10x5` | LocalVol | **4.20** | 2.34 | 5 | ✅ Complete |
-| `lv_density_50x20` | LocalVol | **2.62** | 0.45 | 5 | ✅ Complete |
-| `heston_nn_baseline` | Heston | **26.90** | 2.11 | 5 | ✅ Complete |
-| `heston_nnm2` | Heston | **33.25** | 14.82 | 5 | ✅ Complete |
-| `heston_full_vs_priceonly` | Heston | **33.25** | 14.82 | 5 | ✅ Complete |
+| `lv_nn_baseline` | LocalVol | **9.35** | 0.81 | 5 | ✅ Complete |
+| `lv_nnm2` | LocalVol | **4.38** | 0.13 | 5 | ✅ Complete |
+| `lv_nnpde` | LocalVol | **10.46** | 3.03 | 5 | ✅ Complete |
+| `lv_dnn` | LocalVol | **3.33** | 0.34 | 5 | ✅ Complete |
+| `lv_density_10x5` | LocalVol | **6.05** | 3.07 | 5 | ✅ Complete |
+| `lv_density_50x20` | LocalVol | **3.33** | 0.34 | 5 | ✅ Complete |
+| `heston_nn_baseline` | Heston | **9.86** | 0.79 | 5 | ✅ Complete |
+| `heston_nnm2` | Heston | **4.72** | 0.33 | 5 | ✅ Complete |
+| `heston_full_vs_priceonly` | Heston | **4.72** | 0.33 | 5 | ✅ Complete |
 | `act_ablation_bs` | BS | **3.59** | 0.31 | 5 | ✅ Complete |
 | `act_ablation_relu` | BS | **5.76** | 0.84 | 5 | ✅ Complete |
 | `act_ablation_tanh` | BS | **3.42** | 0.26 | 5 | ✅ Complete |
@@ -36,9 +36,9 @@
 | `classical_bs` | BS | **0.00** | 0.00 | 5 | ✅ Complete |
 | `classical_mc_bs` | BS | **0.20** | 0.19 | 5 | ✅ Complete |
 | `classical_lv` | LocalVol | **0.00** | 0.00 | 5 | ✅ Complete |
-| `classical_mc_lv` | LocalVol | **8.35** | 1.75 | 5 | ✅ Complete |
-| `classical_heston` | Heston | **0.24** | 0.03 | 5 | ✅ Complete |
-| `classical_mc_heston` | Heston | **12.30** | 4.36 | 5 | ✅ Complete |
+| `classical_mc_lv` | LocalVol | **0.28** | 0.25 | 5 | ✅ Complete |
+| `classical_heston` | Heston | **0.21** | 0.09 | 5 | ✅ Complete |
+| `classical_mc_heston` | Heston | **1.49** | 1.20 | 5 | ✅ Complete |
 
 ---
 

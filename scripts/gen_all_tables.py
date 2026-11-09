@@ -208,6 +208,14 @@ def generate_ablation_table(data: dict, output_dir: Path) -> None:
         _safe_pct(e_dn, e_sp),
         "Dense vs sparse; tests H3",
     ])
+    p_sp = sparse.get("mean", {}).get("param_rel_err")
+    p_dn = dense.get("mean", {}).get("param_rel_err")
+    rows.append([
+        "Grid density (A3)",
+        r"$e_\psi$ $\downarrow$",
+        _safe_pct(p_dn, p_sp),
+        "Dense vs sparse; tests H3",
+    ])
 
     tex = _latex_table(
         "tab:ablation-summary",
@@ -270,7 +278,7 @@ def _fmt_duration_range(ms_values: list[float]) -> str:
     """Format a min--max calibration wall-clock range, per-endpoint units.
 
     The classical ranges span orders of magnitude (40 ms BS calibration up to
-    ~50 min Heston MC), so each endpoint gets its own natural unit.
+    ~40 min Heston), so each endpoint gets its own natural unit.
     """
     if not ms_values:
         return NA
