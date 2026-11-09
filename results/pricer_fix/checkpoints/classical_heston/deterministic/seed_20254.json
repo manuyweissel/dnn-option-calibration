@@ -1,0 +1,27 @@
+{
+  "name": "classical_heston",
+  "seed": 20254,
+  "mode": "deterministic",
+  "model": "Heston",
+  "rmse_price": 0.00019060935010480992,
+  "param_rel_err": 0.5711888057580671,
+  "duration_ms": 2406295.944277197,
+  "timestamp": "2026-11-08T20:34:19.859649",
+  "quick": false,
+  "params": {
+    "S0": 1.0,
+    "r": 0.02,
+    "v0": 0.041715723990700906,
+    "kappa": 3.206043185406292,
+    "theta": 0.03874358497738922,
+    "xi": 0.6210530003811766,
+    "rho": -0.5006619947463801
+  },
+  "true_calib_params": {
+    "v0": 0.04,
+    "kappa": 2.0,
+    "theta": 0.04,
+    "xi": 0.5,
+    "rho": -0.5
+  }
+}

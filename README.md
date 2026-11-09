@@ -7,8 +7,8 @@ Code and results accompanying the Master's thesis
 
 The code trains multilayer perceptrons `u_θ(K, T)` on synthetic European call-price surfaces generated
 under three models (Black–Scholes, power-law local volatility, Heston). It compares four neural training
-variants with two classical calibration baselines and writes every table and figure of the thesis's
-results chapter.
+variants with two classical calibration baselines and writes the figures and the generated tables of
+the thesis.
 
 | Variant | Training signal |
 |---|---|
@@ -46,22 +46,33 @@ This runs every experiment of the thesis with the seeds 20251–20255 and writes
   per-seed metrics of every experiment, plus hardware and software information under `_meta`,
 - `runs/<timestamp>__<experiment>__multiseed/`: one folder per seed with `cfg.json`, `metrics.csv`
   (per-epoch history), `model.pt` and `summary.json`,
-- the PNG figures and auxiliary tables (the thesis tables are written by `gen_all_tables.py`, see below).
+- the PNG figures and auxiliary tables (the generated thesis tables are written by `gen_all_tables.py`,
+  see below).
 
 The classical baselines run on the CPU and are checkpointed per seed, so an interrupted run resumes;
 the Heston baselines take roughly 40 minutes per seed, deterministic and Monte Carlo alike.
 Selected experiments can be re-run with `--only`, for example
 `--only act_ablation_relu.json,act_ablation_sine.json`.
 
-The thesis reports `results/all_results_20261108_213044.json`. It combines the Black–Scholes entries
-(including ablations A1, A2 and A4 and the Black–Scholes classical calibrations) of
-`results/all_results_20261031_162739.json` (run of 31 October 2026) with the local-volatility and Heston
-entries (including ablation A3 and the classical calibrations) of
-`results/pricer_fix/all_results_pricer_fix.json` (run of 8 November 2026, same seeds); `_meta` records
-both sources. In the run of 8 November, neural and classical jobs ran concurrently, so its wall-clock
-times are upper bounds. `runs/` holds the per-run folders of both runs.
+The thesis reports `results/all_results_20261108_213044.json`. It combines the Black–Scholes entries of
+`results/all_results_20261031_162739.json` with the local-volatility and Heston entries of
+`results/pricer_fix/all_results_pricer_fix.json`; `_meta` records both sources.
 
-To regenerate the thesis tables, figures and p-values from these results without training:
+- Black–Scholes: neural runs of 31 October 2026, including ablations A1, A2 and A4. The Black–Scholes
+  classical calibrations in that file were computed on 4 June 2026 and carried over unchanged from
+  their per-seed checkpoints; the Black–Scholes parameter sweep (not reported) dates from 16 July 2026.
+- Local volatility and Heston: neural runs (including ablation A3), parameter sweeps and classical
+  calibrations of 8 November 2026, same seeds. In this run, neural and classical jobs ran concurrently,
+  so its wall-clock times are upper bounds.
+
+The local-volatility and Heston entries of the 31 October file are superseded by the run of 8 November,
+which uses the corrected local-volatility and Heston pricers in `src/models/pricing.py`; the thesis does
+not use them. `runs/` holds the run folders of the reported neural runs, and
+`results/pricer_fix/checkpoints/` the per-seed fitted parameters of the local-volatility and Heston
+classical calibrations.
+
+To regenerate the thesis figures, the generated thesis tables and the p-values from these results
+without training:
 
 ```bash
 python scripts/gen_all_tables.py  --results-file results/all_results_20261108_213044.json
@@ -69,9 +80,12 @@ python scripts/gen_all_figures.py --results-file results/all_results_20261108_21
 python scripts/paired_tests.py    --results-file results/all_results_20261108_213044.json
 ```
 
-`paired_tests.py` prints the paired two-sided t-tests (paired by seed) quoted in the thesis with their
-Holm-corrected p-values. Inside the thesis repository the tables and figures are written to the LaTeX
-assets; in this stand-alone repository they are written to `outputs/`.
+`gen_all_tables.py` writes the metric tables of the three models, the ablation summary and the
+complexity table; the classical-baseline, training-time, Black–Scholes recovery and Heston no-arbitrage
+tables of the thesis were transcribed by hand from the same results file. `paired_tests.py` prints the
+paired two-sided t-tests (paired by seed) quoted in the thesis with their Holm-corrected p-values.
+Inside the thesis repository the tables and figures are written to the LaTeX assets; in this
+stand-alone repository they are written to `outputs/`.
 
 The numerical illustration of the grid-density stability constant (thesis Appendix A,
 "Numerical Illustration: Grid-Sparsity Scaling for Black–Scholes") is reproduced by

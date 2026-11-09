@@ -1298,8 +1298,9 @@ def update_results_summary(all_results: dict):
 
 The hypotheses H1 (Greek supervision), H2 (activation smoothness) and H3
 (strike--maturity coverage) are stated in Chapter 5 of the thesis and assessed
-in Chapters 9--11. This summary lists raw metrics only; the paired t-tests
-are written to `statistical_tests.csv` in the thesis tables directory.
+in Chapters 9--11. This summary lists raw metrics only. The paired t-tests
+with Holm correction quoted in the thesis are printed by `scripts/paired_tests.py`;
+`assets/tables/statistical_tests.csv` holds auxiliary uncorrected tests.
 
 ---
 
@@ -1318,6 +1319,8 @@ stepping, which is why their step count was reduced for feasibility.
 ---
 
 ## 📁 **Generated Artifacts**
+
+Paths are relative to the thesis directory (`outputs/` in the stand-alone repository):
 
 - `assets/figures/experiments/generated/` - Publication-quality figures
 - `assets/tables/` - CSV and LaTeX tables

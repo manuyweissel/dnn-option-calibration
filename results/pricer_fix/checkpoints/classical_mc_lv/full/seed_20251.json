@@ -1,0 +1,22 @@
+{
+  "name": "classical_mc_lv",
+  "seed": 20251,
+  "mode": "mc_full",
+  "model": "LocalVol",
+  "rmse_price": 0.00016380133120550734,
+  "param_rel_err": 0.11362988005025074,
+  "duration_ms": 208753.75070795417,
+  "timestamp": "2026-11-08T19:51:20.015697",
+  "quick": false,
+  "params": {
+    "S0": 1.0,
+    "r": 0.02,
+    "beta": 0.0,
+    "sigma0": 0.20053486252986194,
+    "alpha": 0.43881077449630435
+  },
+  "true_calib_params": {
+    "sigma0": 0.2,
+    "alpha": 0.5
+  }
+}

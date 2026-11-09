@@ -84,12 +84,15 @@ def holm(pvalues):
 def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--results-file", type=Path, default=DEFAULT)
-    results = json.load(open(ap.parse_args().results_file))
+    args = ap.parse_args()
+    results = json.load(open(args.results_file))
 
     rows = [(label, core, *paired(results, a, b, metric)) for label, a, b, metric, core in TESTS]
     adjusted = holm(np.array([r[4] for r in rows]))
-    # Self-check against the thesis (canonical Black-Scholes value, Tab. 9.6 caption "p < 0.001").
-    assert format(rows[0][4], ".1e") == "1.1e-05", rows[0]
+    if args.results_file.resolve() == DEFAULT:
+        # Self-check against the thesis (canonical Black-Scholes value, Tab. 9.6 caption "p < 0.001").
+        # Only for the reported file: a reproduction on other hardware gives slightly different values.
+        assert format(rows[0][4], ".1e") == "1.1e-05", rows[0]
 
     print(f"{'test':36s} {'mean 1':>10s} {'mean 2':>10s} {'change':>8s} {'p':>9s} {'p Holm':>8s} better")
     for (label, core, m1, m2, p, better, n), p_holm in zip(rows, adjusted):
